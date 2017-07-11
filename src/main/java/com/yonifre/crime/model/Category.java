@@ -4,7 +4,8 @@ public enum Category {
 	DRUGS,
 	AGRESSIVE,
 	THEFT,
-	SUSPICIOUS;
+	SUSPICIOUS,
+	AFVAL;
 	
 
 }

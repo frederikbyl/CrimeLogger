@@ -6,7 +6,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -16,7 +15,8 @@ import com.yonifre.crime.model.Age;
 import com.yonifre.crime.model.Category;
 import com.yonifre.crime.model.Crime;
 import com.yonifre.crime.model.Location;
-import com.yonifre.crime.model.input.CrimeInput;
+import com.yonifre.crime.model.convertor.CrimeConvertor;
+import com.yonifre.crime.model.dao.CrimeDao;
 import com.yonifre.crime.repository.CrimeRepository;
 
 @RestController
@@ -34,14 +34,16 @@ public class CrimeController {
 		crime.setAge(Age.ADOLESCENT);
 		crime.setCategory(Category.DRUGS);
 		crime.setDate(new Date());
+		
 		crime.setLocation(new Location());
 		
+		CrimeDao crimeDao = CrimeConvertor.convert(crime);
 		
 		
 		
-		Crime savedCrime = crimeRepository.save(crime);
+		CrimeDao savedCrime = crimeRepository.save(crimeDao);
 		
-		return savedCrime;
+		return crime;
 	}
 	
 	@RequestMapping(path="/crimes",  method = RequestMethod.GET)
