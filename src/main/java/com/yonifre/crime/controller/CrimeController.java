@@ -36,6 +36,9 @@ public class CrimeController {
 		crime.setDate(new Date());
 		crime.setLocation(new Location());
 		
+		
+		
+		
 		Crime savedCrime = crimeRepository.save(crime);
 		
 		return savedCrime;
