@@ -54,17 +54,26 @@ public class CrimeController {
 	@RequestMapping(path="/crimes",  method = RequestMethod.GET)
 	public  List<Crime> getAllCrimes(@RequestParam(value="longitude", defaultValue="-1") double longitude, @RequestParam(value="latitude", defaultValue="-1") double latitude , @RequestParam(value="radius", defaultValue="-1") double radius ) {
 		ArrayList<Crime> crimes = new ArrayList<Crime>();
+		double latitude1 = 51.0035671;
+		double longitude1 = 4.838756;
 		
-		Crime crime1 = new Crime();
-		crime1.setAge(Age.ADOLESCENT);
-		crime1.setCategory(Category.DRUGS);
-		Location location = new Location();
-		location.setLatitude(51.0035671);
-		location.setLongitude(4.838756);
-		crime1.setLocation(location);
+		for(int i=0; i<50; i++) {
+			Crime crime1 = new Crime();
+			crime1.setAge(Age.ADOLESCENT);
+			crime1.setCategory(Category.DRUGS);
+			Location location = new Location();
+			location.setLatitude(latitude1);
+			location.setLongitude(longitude1);
+			crime1.setLocation(location);
+			crimes.add(crime1);
+			latitude1=latitude1-0.001;
+			longitude1=longitude1-0.001;
+		}
+		
+	
 		
 		
-		crimes.add(crime1);
+		
 		return crimes;
 	}
 	
