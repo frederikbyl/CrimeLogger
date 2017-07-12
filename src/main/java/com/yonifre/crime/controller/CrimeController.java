@@ -34,8 +34,13 @@ public class CrimeController {
 		crime.setAge(Age.ADOLESCENT);
 		crime.setCategory(Category.DRUGS);
 		crime.setDate(new Date());
+		Location location = new Location();
 		
-		crime.setLocation(new Location());
+		location.setLatitude(51.0035671);
+		location.setLongitude(4.838756);
+		 
+		crime.setLocation(location);
+		
 		
 		CrimeDao crimeDao = CrimeConvertor.convert(crime);
 		
@@ -54,6 +59,8 @@ public class CrimeController {
 		crime1.setAge(Age.ADOLESCENT);
 		crime1.setCategory(Category.DRUGS);
 		Location location = new Location();
+		location.setLatitude(51.0035671);
+		location.setLongitude(4.838756);
 		crime1.setLocation(location);
 		
 		
