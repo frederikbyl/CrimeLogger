@@ -18,7 +18,7 @@ import org.springframework.security.web.authentication.preauth.AbstractPreAuthen
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-    private final String LOGIN_URL = "/credits";
+    private final String LOGIN_URL = "/login";
 
     @Bean
     public AuthenticationEntryPoint authenticationEntryPoint() {
@@ -42,6 +42,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .exceptionHandling().authenticationEntryPoint(authenticationEntryPoint())
                 .and().authorizeRequests()
                 .antMatchers(GET, "/").permitAll()
-                .antMatchers(GET, "/crimes").authenticated();
+                .antMatchers(GET, "/crimes").authenticated()
+                .antMatchers(GET, "/authenticate").authenticated();
     }
 }
