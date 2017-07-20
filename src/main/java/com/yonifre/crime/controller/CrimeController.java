@@ -7,7 +7,6 @@ import java.util.List;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -21,7 +20,6 @@ import com.yonifre.crime.model.Crime;
 import com.yonifre.crime.model.Location;
 import com.yonifre.crime.model.convertor.CrimeConvertor;
 import com.yonifre.crime.model.dao.CrimeDao;
-import com.yonifre.crime.oauth.UserInfo;
 import com.yonifre.crime.repository.CrimeRepository;
 
 @RestController
@@ -37,8 +35,8 @@ public class CrimeController {
 
 	@RequestMapping(path = "/crimes", method = RequestMethod.POST)
 	public Crime registerCrime() {
-		UserInfo userInfo = (UserInfo) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		System.out.println("Name" + userInfo.getFamilyName());
+//		UserInfo userInfo = (UserInfo) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//		System.out.println("Name" + userInfo.getFamilyName());
 		Crime crime = new Crime();
 		crime.setAge(Age.ADOLESCENT);
 		crime.setCategory(Category.DRUGS);
@@ -61,8 +59,8 @@ public class CrimeController {
 	public List<Crime> getAllCrimes(@RequestParam(value = "longitude", defaultValue = "-1") double longitude,
 			@RequestParam(value = "latitude", defaultValue = "-1") double latitude,
 			@RequestParam(value = "radius", defaultValue = "-1") double radius) {
-		UserInfo userInfo = (UserInfo) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		System.out.println("Name" + userInfo.getId() + " " + userInfo.getGivenName());
+//		UserInfo userInfo = (UserInfo) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//		System.out.println("Name" + userInfo.getId() + " " + userInfo.getGivenName());
 
 		ArrayList<Crime> crimes = new ArrayList<Crime>();
 		double latitude1 = 51.0035671;
