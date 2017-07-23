@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -17,12 +18,15 @@ import com.yonifre.crime.model.Age;
 import com.yonifre.crime.model.Category;
 import com.yonifre.crime.model.Crime;
 import com.yonifre.crime.model.Location;
+import com.yonifre.crime.model.convertor.CrimeConvertor;
+import com.yonifre.crime.model.dao.CrimeDao;
+import com.yonifre.crime.repository.CrimeRepository;
 
 @RestController
 public class CrimeController {
 
-//	@Autowired
-//	private CrimeRepository crimeRepository;
+	@Autowired
+	private CrimeRepository crimeRepository;
 
 	@RequestMapping(value = "/authenticate", method = RequestMethod.GET)
 	public ModelAndView method(HttpServletResponse httpServletResponse) {
@@ -44,9 +48,9 @@ public class CrimeController {
 
 		crime.setLocation(location);
 
-//		CrimeDao crimeDao = CrimeConvertor.convert(crime);
+		CrimeDao crimeDao = CrimeConvertor.convert(crime);
 
-//		CrimeDao savedCrime = crimeRepository.save(crimeDao);
+		CrimeDao savedCrime = crimeRepository.save(crimeDao);
 
 		return crime;
 	}
