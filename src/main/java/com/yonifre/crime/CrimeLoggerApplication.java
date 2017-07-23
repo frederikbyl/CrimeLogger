@@ -9,4 +9,6 @@ public class CrimeLoggerApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(CrimeLoggerApplication.class, args);
 	}
+	
+	
 }
