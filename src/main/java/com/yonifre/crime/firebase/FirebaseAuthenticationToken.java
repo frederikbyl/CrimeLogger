@@ -27,7 +27,7 @@ public class FirebaseAuthenticationToken extends AbstractAuthenticationToken {
 		super(null);
 		this.principal = principal;
 		this.credentials = credentials;
-		setAuthenticated(false);
+		setAuthenticated(true);
 	}
 
 	/**

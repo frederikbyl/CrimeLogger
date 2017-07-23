@@ -20,9 +20,9 @@ import org.springframework.stereotype.Component;
 public class CORSFilter implements Filter {
 
 
-	private String ALLOWED_ORIGINS = "http://localhost:63342";
+	private String ALLOWED_ORIGINS = "'https://crimelogger-3da05.firebaseapp.com";
 	private String allowedHttpMethodList = "GET, POST, PUT, DELETE, OPTIONS";
-	private String allowedHttpHeaderList = "Origin, Content-Type, Accept, X-Requested-With, Authorization";
+	private String allowedHttpHeaderList = "Origin, Content-Type, Accept, X-Requested-With, Authorization, X-Authorization-Firebase";
 	private String preflightMaxAge = "3600";
 
 	private final String ORIGIN = "Origin";
