@@ -18,8 +18,8 @@ public class FirebaseConfig {
 	@PostConstruct
 	public void init() throws IOException {
 		System.out.println("CONSTRUCTING FIREBASE");
-		ClassPathResource classPathResource = new ClassPathResource("firebase/crimelogger-3da05-firebase-adminsdk-egct9-c874e2182f.json");
-
+		ClassPathResource classPathResource = new ClassPathResource("firebase/crimeloggerandroid-firebase-adminsdk-7p3h8-1aad56fcde.json");
+	
 		InputStream serviceAccount = classPathResource.getInputStream();
 		//FileInputStream serviceAccount = new FileInputStream("");
 
